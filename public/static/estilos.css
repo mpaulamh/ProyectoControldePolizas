@@ -1,0 +1,257 @@
+/* Colores: rojo #AE1800, negro #201E1D, gris claro #F3F2F2 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: #f7f7f7;
+  color: #201E1D;
+  line-height: 1.5;
+}
+
+/* Cabecera roja con borde negro abajo */
+.cabecera {
+  background: #AE1800;
+  color: #ffffff;
+  padding: 16px 20px;
+  border-bottom: 4px solid #201E1D;
+}
+
+.contenedor-cabecera {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cabecera h1 {
+  margin: 0 0 6px 0;
+  font-size: 1.5rem;
+}
+
+.fecha-corte {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Contenido principal */
+.contenido {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+/* Tarjetas de contadores */
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tarjeta {
+  flex: 1 1 120px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.tarjeta .etiqueta {
+  font-size: 0.85rem;
+  color: #666666;
+  margin-bottom: 6px;
+}
+
+.tarjeta .valor {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.tarjeta .vigentes { color: #2e7d32; }
+.tarjeta .por-vencer { color: #ef6c00; }
+.tarjeta .vencidas { color: #c62828; }
+
+/* Botón */
+.btn {
+  display: inline-block;
+  background: #AE1800;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn:hover {
+  background: #8f1500;
+}
+
+.btn-azul {
+  background: #201E1D;
+}
+
+.btn-azul:hover {
+  background: #3a3836;
+}
+
+/* Panel de primas y inconsistencias */
+.panel {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #F3F2F2;
+  padding-bottom: 8px;
+}
+
+.primas-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primas-lista li {
+  padding: 6px 0;
+  border-bottom: 1px solid #F3F2F2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inconsistencias-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inconsistencias-lista li {
+  padding: 6px 0;
+  border-bottom: 1px solid #F3F2F2;
+  color: #c62828;
+  font-size: 0.9rem;
+}
+
+/* Tabla de pólizas */
+.tabla-wrap {
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.tabla-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-wrap th,
+.tabla-wrap td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.tabla-wrap th {
+  background: #F3F2F2;
+  color: #201E1D;
+  font-weight: bold;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 0;
+}
+
+.tabla-wrap tr:last-child td {
+  border-bottom: none;
+}
+
+.fila-vencida {
+  background: #fdecec;
+}
+
+.fila-por-vencer {
+  background: #fff4e5;
+}
+
+/* Enlaces de aviso */
+.aviso-link {
+  color: #AE1800;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.aviso-link:hover {
+  text-decoration: underline;
+}
+
+.sin-aviso {
+  color: #999999;
+  font-size: 0.85rem;
+}
+
+/* Etiquetas de problema */
+.etiqueta-problema {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #ffffff;
+  margin-left: 6px;
+}
+
+.etiqueta-maestro {
+  background: #201E1D;
+}
+
+.etiqueta-prima {
+  background: #c62828;
+}
+
+/* Pie de página */
+.pie {
+  background: #F3F2F2;
+  color: #666666;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.85rem;
+  border-top: 1px solid #dddddd;
+  margin-top: 30px;
+}
+
+/* Responsive para celular */
+@media (max-width: 600px) {
+  .contenido {
+    padding: 0 10px;
+  }
+
+  .tarjeta .valor {
+    font-size: 1.4rem;
+  }
+
+  .tabla-wrap th,
+  .tabla-wrap td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
