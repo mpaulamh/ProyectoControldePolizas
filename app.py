@@ -11,6 +11,8 @@ app = Flask(
 
 app.register_blueprint(polizas_bp)
 
+app.secret_key = os.environ.get("SECRET_KEY", "cambiar_por_clave_segura_en_produccion")
+
 
 @app.template_filter("moneda")
 def formato_moneda(valor):

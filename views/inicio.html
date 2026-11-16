@@ -2,7 +2,32 @@
 
 {% block contenido %}
 
+<!-- Mensajes flash (éxito / error) -->
+{% with mensajes = get_flashed_messages(with_categories=true) %}
+  {% if mensajes %}
+    <div class="flash-messages">
+      {% for categoria, mensaje in mensajes %}
+        <div class="alerta alerta-{{ categoria }}">{{ mensaje }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
 <h2 style="margin-top: 0;">Tablero de pólizas</h2>
+
+<!-- Botones de acciones -->
+<div class="acciones">
+  <form method="POST" action="{{ url_for('polizas.importar_clientes') }}" enctype="multipart/form-data" class="form-importar" style="display:inline;">
+    <input type="file" name="archivo" accept=".xlsx,.xls" required>
+    <button type="submit" class="btn btn-importar">Importar Excel de clientes</button>
+  </form>
+
+  <form method="POST" action="{{ url_for('polizas.procesar') }}" style="display:inline;">
+    <button type="submit" class="btn btn-procesar">Generar proceso</button>
+  </form>
+
+  <a href="{{ url_for('polizas.descargar_avisos') }}" class="btn btn-exportar">Exportar avisos (.zip)</a>
+</div>
 
 <!-- 3 tarjetas con contadores (fondo de color) -->
 <div class="tarjetas">
@@ -20,8 +45,8 @@
   </div>
 </div>
 
-<!-- Botón descargar todos los avisos -->
-<a href="{{ url_for('polizas.descargar_avisos') }}" class="btn btn-azul">Descargar todos los avisos (.zip)</a>
+<!-- Botón descargar todos los avisos (mantenido por si acaso) -->
+<a href="{{ url_for('polizas.descargar_avisos') }}" class="btn btn-azul" style="margin-top: 16px; display:inline-block;">Descargar todos los avisos (.zip)</a>
 
 <!-- Panel: primas por aseguradora -->
 <div class="panel">
