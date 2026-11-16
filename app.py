@@ -11,6 +11,15 @@ app = Flask(
 
 app.register_blueprint(polizas_bp)
 
+
+@app.template_filter("moneda")
+def formato_moneda(valor):
+    """Formatea un número como moneda con separadores de miles."""
+    if valor is None:
+        return "No registrada"
+    return f"{valor:,.0f}"
+
+
 if __name__ == "__main__":
     app.run(
         debug=False,

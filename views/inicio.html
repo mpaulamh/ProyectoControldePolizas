@@ -4,19 +4,19 @@
 
 <h2 style="margin-top: 0;">Tablero de pólizas</h2>
 
-<!-- 3 tarjetas con contadores -->
+<!-- 3 tarjetas con contadores (fondo de color) -->
 <div class="tarjetas">
-  <div class="tarjeta">
+  <div class="tarjeta vigentes">
     <div class="etiqueta">Vigentes</div>
-    <div class="valor vigentes">{{ conteo.get('Vigente', 0) }}</div>
+    <div class="valor">{{ conteo.get('Vigente', 0) }}</div>
   </div>
-  <div class="tarjeta">
+  <div class="tarjeta por-vencer">
     <div class="etiqueta">Por vencer</div>
-    <div class="valor por-vencer">{{ conteo.get('Por vencer', 0) }}</div>
+    <div class="valor">{{ conteo.get('Por vencer', 0) }}</div>
   </div>
-  <div class="tarjeta">
+  <div class="tarjeta vencidas">
     <div class="etiqueta">Vencidas</div>
-    <div class="valor vencidas">{{ conteo.get('Vencida', 0) }}</div>
+    <div class="valor">{{ conteo.get('Vencida', 0) }}</div>
   </div>
 </div>
 
@@ -29,7 +29,7 @@
   {% if primas %}
   <ul class="primas-lista">
     {% for aseguradora, total in primas.items() %}
-    <li><span>{{ aseguradora }}</span><span>CRC {{ "%.0f"|format(total) }}</span></li>
+    <li><span>{{ aseguradora }}</span><span>CRC {{ total|moneda }}</span></li>
     {% endfor %}
   </ul>
   {% else %}
@@ -80,7 +80,7 @@
           <td>{{ r.ramo or 'No registrada' }}</td>
           <td>{{ r.hasta.strftime('%d/%m/%Y') if r.hasta else 'No registrada' }}</td>
           <td>{{ r.dias_hasta_vencer if r.dias_hasta_vencer is not none else '–' }}</td>
-          <td>{{ "CRC %.0f"|format(r.prima) if r.prima is not none else 'No registrada' }}{% if r.prima is none %} <span class="etiqueta-problema etiqueta-prima">sin prima</span>{% endif %}</td>
+          <td>{{ r.prima|moneda if r.prima is not none else 'No registrada' }}{% if r.prima is none %} <span class="etiqueta-problema etiqueta-prima">sin prima</span>{% endif %}</td>
           <td><strong>{{ r.estado }}</strong></td>
           <td>
             {% if r.estado in ('Por vencer', 'Vencida') %}
